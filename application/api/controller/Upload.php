@@ -1,12 +1,15 @@
 <?php
 namespace app\api\controller;
 
-use app\common\controller\AdminBase;
 use think\Controller;
+use think\Session;
 
-class Upload extends AdminBase {
+class Upload extends Controller {
     protected function _initialize() {
         parent::_initialize();
+        if(!Session::has('admin_id')){
+            $this->error('未登录');
+        }
     }
 
     public function upload() {
