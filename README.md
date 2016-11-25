@@ -8,9 +8,11 @@ Think Admin 1.0 基于ThinkPHP5开发，初始的1.0版本没有完全开发成C
 演示账号：demo demo
 ```
 
-### Think Admin的运行环境要求PHP5.4以上；
-### 为了兼容虚拟主机的使用，index.php入口文件移至根目录；
-### 默认管理员账号：admin，默认密码：admin；
+```
+Think Admin的运行环境要求PHP5.4以上；
+为了兼容虚拟主机的使用，index.php入口文件移至根目录；
+数据库创建完成后，默认管理员账号：admin，默认密码：admin；
+```
 
 ## 注意事项：
 ```
