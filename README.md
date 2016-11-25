@@ -1,7 +1,7 @@
 # Think Admin 1.0
 ===============
 
-Think Admin 1.0 基于ThinkPHP5开发，初始的1.0版本没有完全开发成CMS，只是个后台管理系统，附带常用的功能，方便扩展使用。
+Think Admin 1.0 基于ThinkPHP5开发，初始的1.0版本没有开发成CMS，只是个后台管理系统，附带常用的功能，方便扩展使用。
 
 ```
 后台演示：http://www.xiyilou.com/index.php/admin （若配置了URL重写可省略index.php）
@@ -91,7 +91,7 @@ www  WEB部署目录（或者子目录）
 ```
 
 
-## 数据表和字段
+## 数据表
 ```
 *   `think_admin_user`  管理员表
 *   `think_article`     文章表
