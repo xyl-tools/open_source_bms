@@ -3,7 +3,8 @@
 
 Think Admin 1.0 基于ThinkPHP5开发，初始的1.0版本没有完全开发成CMS，只是个后台管理系统，附带常用的功能，方便扩展使用。
 
-后台演示：http://www.xiyilou.com/admin
+后台演示：http://www.xiyilou.com/index.php/admin （若配置了URL重写可省略index.php）
+演示账号：demo demo
 
 > Think Admin的运行环境要求PHP5.4以上；
 > 为了兼容虚拟主机的使用，index.php入口文件移至根目录；
@@ -98,15 +99,3 @@ www  WEB部署目录（或者子目录）
 *   `think_system`      系统配置表
 *   `think_user`        用户表
 ~~~
-
-## 版权信息
-
-Think Admin遵循Apache2开源协议发布，并提供免费使用。
-
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
-
-版权所有Copyright © 2016 by Think Admin (https://github.com/xiayulei/think_admin)
-
-All rights reserved。
-
-更多细节参阅 [LICENSE.txt](LICENSE.txt)

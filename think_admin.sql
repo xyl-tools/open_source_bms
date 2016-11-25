@@ -35,7 +35,6 @@ CREATE TABLE `think_admin_user` (
 -- Records of think_admin_user
 -- ----------------------------
 INSERT INTO `think_admin_user` VALUES ('1', 'admin', 'b63ddacba6c3835cc1b250c5d9de6ac1', '1', '2016-10-18 15:28:37', '2016-11-25 13:41:12', '127.0.0.1');
-INSERT INTO `think_admin_user` VALUES ('2', 'demo', 'a14fc1b7ea6301eec17a6b3bbb18c5e2', '1', '2016-11-25 09:12:02', '2016-11-25 13:39:56', '127.0.0.1');
 
 -- ----------------------------
 -- Table structure for think_article
