@@ -1,0 +1,6 @@
+.idea
+runtime/cache/*
+runtime/log/*
+runtime/temp/*
+composer.lock
+*.log
