@@ -3,18 +3,20 @@
 
 Think Admin 1.0 基于ThinkPHP5开发，初始的1.0版本没有完全开发成CMS，只是个后台管理系统，附带常用的功能，方便扩展使用。
 
+```
 后台演示：http://www.xiyilou.com/index.php/admin （若配置了URL重写可省略index.php）
 演示账号：demo demo
+```
 
-> Think Admin的运行环境要求PHP5.4以上；
-> 为了兼容虚拟主机的使用，index.php入口文件移至根目录；
-> 默认管理员账号：admin，默认密码：admin；
+### Think Admin的运行环境要求PHP5.4以上；
+### 为了兼容虚拟主机的使用，index.php入口文件移至根目录；
+### 默认管理员账号：admin，默认密码：admin；
 
 ## 注意事项：
-~~~
+```
 *   数据库表前缀默认为think_开头，`application`目录下的`config.php`配置文件中，`salt`项的值为全站需要加密的地方公用的加密盐值，
 *   开发新站点前请注意修改此项，使用`md5('新密码' . config('salt'))`重新生成管理员密码，替换`think_admin_user`中的默认密码
-~~~
+```
 
 详细配置及开发文档参考 [ThinkPHP5完全开发手册](http://www.kancloud.cn/manual/thinkphp5)
 
@@ -22,7 +24,7 @@ Think Admin 1.0 基于ThinkPHP5开发，初始的1.0版本没有完全开发成C
 
 初始的目录结构如下：
 
-~~~
+```
 www  WEB部署目录（或者子目录）
 │
 ├─admin_themes          后台模板目录
@@ -84,11 +86,11 @@ www  WEB部署目录（或者子目录）
 ├─README.md             README 文件
 ├─think                 命令行入口文件
 ├─index.php             网站入口文件
-~~~
+```
 
 
 ## 数据表和字段
-~~~
+```
 *   `think_admin_user`  管理员表
 *   `think_article`     文章表
 *   `think_auth_group`  权限组表
@@ -97,5 +99,4 @@ www  WEB部署目录（或者子目录）
 *   `think_category`    分类表
 *   `think_nav`         导航表
 *   `think_system`      系统配置表
-*   `think_user`        用户表
-~~~
+```
