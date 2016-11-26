@@ -1,0 +1,25 @@
+{
+    "name": "5ini99/think-auth",
+    "description": "auth package for thinkphp5",
+    "homepage": "https://github.com/5ini99/think-auth",
+    "license": "Apache-2.0",
+    "minimum-stability": "stable",
+    "version": "1.0.1",
+    "authors": [
+        {
+            "name": "xiaobo.sun",
+            "email": "xiaobo.sun@qq.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/5ini99/think-auth/issues"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "think\\auth\\": "src/"
+        }
+    }
+}
