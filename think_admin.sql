@@ -123,7 +123,7 @@ CREATE TABLE `think_auth_rule` (
 INSERT INTO `think_auth_rule` VALUES ('1', 'admin/System/default', '系统配置', '1', '1', '0', 'fa fa-gears', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('2', 'admin/System/siteConfig', '站点配置', '1', '1', '1', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('3', 'admin/System/updateSiteConfig', '更新配置', '1', '0', '2', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('4', 'admin/System/clear', '清除缓存', '1', '0', '1', '', '0', '');
+-- INSERT INTO `think_auth_rule` VALUES ('4', 'admin/System/clear', '清除缓存', '1', '0', '1', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('5', 'admin/Menu/default', '菜单管理', '1', '1', '0', 'fa fa-bars', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('6', 'admin/Menu/index', '后台菜单', '1', '1', '5', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('7', 'admin/Menu/add', '添加菜单', '1', '0', '6', '', '0', '');
@@ -255,4 +255,4 @@ CREATE TABLE `think_user` (
 -- ----------------------------
 -- Records of think_user
 -- ----------------------------
-INSERT INTO `think_user` VALUES ('1', 'aaa', '9ac86d5339e09d44d171d194be4af0b9', '', '', '1', '2016-11-25 10:24:20', null, '');
+INSERT INTO `think_user` VALUES ('1', 'test', '9ac86d5339e09d44d171d194be4af0b9', '', '', '1', '2016-11-25 10:24:20', null, '');

@@ -101,4 +101,5 @@ www  WEB部署目录（或者子目录）
 *   `think_category`    分类表
 *   `think_nav`         导航表
 *   `think_system`      系统配置表
+*   `think_user`        用户表
 ```
