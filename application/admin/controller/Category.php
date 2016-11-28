@@ -45,12 +45,19 @@ class Category extends AdminBase {
      * 保存栏目
      */
     public function save() {
-        $data = $this->request->post();
+        if ($this->request->isPost()) {
+            $data            = $this->request->post();
+            $validate_result = $this->validate($data, 'Category');
 
-        if ($this->category_model->allowField(true)->save($data)) {
-            $this->success('保存成功');
-        } else {
-            $this->error('保存失败');
+            if ($validate_result !== true) {
+                $this->error($validate_result);
+            } else {
+                if ($this->category_model->allowField(true)->save($data)) {
+                    $this->success('保存成功');
+                } else {
+                    $this->error('保存失败');
+                }
+            }
         }
     }
 
@@ -70,12 +77,19 @@ class Category extends AdminBase {
      * @param $id
      */
     public function update($id) {
-        $data = $this->request->post();
+        if ($this->request->isPost()) {
+            $data            = $this->request->post();
+            $validate_result = $this->validate($data, 'Category');
 
-        if ($this->category_model->allowField(true)->save($data, $id) !== false) {
-            $this->success('更新成功');
-        } else {
-            $this->error('更新失败');
+            if ($validate_result !== true) {
+                $this->error($validate_result);
+            } else {
+                if ($this->category_model->allowField(true)->save($data, $id) !== false) {
+                    $this->success('更新成功');
+                } else {
+                    $this->error('更新失败');
+                }
+            }
         }
     }
 
