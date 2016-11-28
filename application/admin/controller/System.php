@@ -33,13 +33,15 @@ class System extends AdminBase {
      * 提交配置
      */
     public function updateSiteConfig() {
-        $site_config   = $this->request->post('site_config/a');
-        $data['value'] = serialize($site_config);
-        if (Db::name('system')->where('name', 'site_config')->update($data) !== false) {
-            Cache::set('site_config', $site_config);
-            $this->success('提交成功');
-        } else {
-            $this->error('提交失败');
+        if ($this->request->isPost()) {
+            $site_config   = $this->request->post('site_config/a');
+            $data['value'] = serialize($site_config);
+            if (Db::name('system')->where('name', 'site_config')->update($data) !== false) {
+                Cache::set('site_config', $site_config);
+                $this->success('提交成功');
+            } else {
+                $this->error('提交失败');
+            }
         }
     }
 
