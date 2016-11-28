@@ -1,7 +1,6 @@
 <?php
 namespace app\common\controller;
 
-use app\admin\model\AuthGroup as AuthGroupModel;
 use think\auth\Auth;
 use think\Loader;
 use think\Cache;
