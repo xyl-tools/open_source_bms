@@ -44,12 +44,14 @@ class Nav extends AdminBase {
      * 保存导航
      */
     public function save() {
-        $data = $this->request->post();
+        if ($this->request->isPost()) {
+            $data = $this->request->post();
 
-        if ($this->nav_model->save($data)) {
-            $this->success('保存成功');
-        } else {
-            $this->error('保存失败');
+            if ($this->nav_model->save($data)) {
+                $this->success('保存成功');
+            } else {
+                $this->error('保存失败');
+            }
         }
     }
 
@@ -69,12 +71,14 @@ class Nav extends AdminBase {
      * @param $id
      */
     public function update($id) {
-        $data = $this->request->post();
+        if ($this->request->isPost()) {
+            $data = $this->request->post();
 
-        if ($this->nav_model->save($data, $id) !== false) {
-            $this->success('更新成功');
-        } else {
-            $this->error('更新失败');
+            if ($this->nav_model->save($data, $id) !== false) {
+                $this->success('更新成功');
+            } else {
+                $this->error('更新失败');
+            }
         }
     }
 
