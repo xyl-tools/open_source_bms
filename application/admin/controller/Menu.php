@@ -45,12 +45,17 @@ class Menu extends AdminBase {
      */
     public function save() {
         if ($this->request->isPost()) {
-            $data = $this->request->post();
+            $data            = $this->request->post();
+            $validate_result = $this->validate($data, 'Menu');
 
-            if ($this->auth_rule_model->save($data)) {
-                $this->success('保存成功');
+            if ($validate_result !== true) {
+                $this->error($validate_result);
             } else {
-                $this->error('保存失败');
+                if ($this->auth_rule_model->save($data)) {
+                    $this->success('保存成功');
+                } else {
+                    $this->error('保存失败');
+                }
             }
         }
     }
@@ -72,12 +77,17 @@ class Menu extends AdminBase {
      */
     public function update($id) {
         if ($this->request->isPost()) {
-            $data = $this->request->post();
+            $data            = $this->request->post();
+            $validate_result = $this->validate($data, 'Menu');
 
-            if ($this->auth_rule_model->save($data, $id) !== false) {
-                $this->success('更新成功');
+            if ($validate_result !== true) {
+                $this->error($validate_result);
             } else {
-                $this->error('更新失败');
+                if ($this->auth_rule_model->save($data, $id) !== false) {
+                    $this->success('更新成功');
+                } else {
+                    $this->error('更新失败');
+                }
             }
         }
     }
