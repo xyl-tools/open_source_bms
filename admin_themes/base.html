@@ -32,7 +32,7 @@
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" id="nav-tree">
                 <li class="layui-nav-item layui-nav-title"><a>管理菜单</a></li>
-                <li class="layui-nav-item layui-this">
+                <li class="layui-nav-item">
                     <a href="/index.php/admin/index/index"><i class="fa fa-home"></i> 网站概览</a>
                 </li>
                 <li class="layui-nav-item">
@@ -82,8 +82,8 @@
     }).use('admin');
 
     var _current_url = "admin/{$controller}";
-    $('.layui-nav-item').removeClass('layui-this');
-    $('.layui-nav-tree a[href*="'+_current_url+'"]').parents('.layui-nav-item').addClass('layui-this layui-nav-itemed');
+    $('.layui-nav-item').find('a').removeClass('layui-this');
+    $('.layui-nav-tree').find('a[href*="'+_current_url+'"]').parent().addClass('layui-this').parents('.layui-nav-item').addClass('layui-nav-itemed');
 </script>
 {block name="js"}{/block}
 <!--页面JS脚本-->
