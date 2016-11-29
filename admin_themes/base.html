@@ -30,7 +30,7 @@
     <!--侧边栏-->
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
-            <ul class="layui-nav layui-nav-tree" id="nav-tree">
+            <ul class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item layui-nav-title"><a>管理菜单</a></li>
                 <li class="layui-nav-item">
                     <a href="/index.php/admin/index/index"><i class="fa fa-home"></i> 网站概览</a>
@@ -76,16 +76,20 @@
 <!--JS引用-->
 <script src="/public/static/js/jquery.min.js"></script>
 <script src="/public/static/layui/layui.js"></script>
+{block name="js"}{/block}
+
 <script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "admin/{$controller}"
+    };
+
     layui.config({
         base: '/public/static/js/'
     }).use('admin');
 
-    var _current_url = "admin/{$controller}";
-    $('.layui-nav-item').find('a').removeClass('layui-this');
-    $('.layui-nav-tree').find('a[href*="'+_current_url+'"]').parent().addClass('layui-this').parents('.layui-nav-item').addClass('layui-nav-itemed');
 </script>
-{block name="js"}{/block}
+
 <!--页面JS脚本-->
 {block name="script"}{/block}
 </body>
