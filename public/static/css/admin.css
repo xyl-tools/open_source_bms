@@ -1,0 +1,33 @@
+/*后台公用样式*/
+
+.login {background: url(../images/login-bg.png) #56bc94;}
+.login .login-title {color: #fff;text-align: center;font-size: 20px;margin-top: 200px;}
+.login .login-form {max-width: 450px;margin: 10px auto;position: relative;left: -50px;color: #fff;}
+.login .login-form .captcha {width: 140px;height: 38px;}
+.login .login-form input {background-color: rgba(255, 255, 255, 0.3);border: 1px solid rgba(255, 255, 255, 0.3);color: #fff;}
+.login .login-form button {width: 100%;background-color: #048f74;}
+
+.logo {margin-top: 25px;margin-left: 25px;}
+
+.header {background-color: #393D49;}
+
+.footer {line-height: 44px;}
+
+.layui-body {left: 210px;}
+.layui-side {top: 60px;}
+.layui-table tbody tr:hover {background-color: #f2f2f2;}
+.layui-tab {overflow: visible;}
+.layui-tab-title > li > a {display: block;}
+.layui-btn-normal {background: #4caf50;}
+.layui-btn-danger {background: #e90d24;}
+.layui-nav-tree .layui-nav-child dd a {text-indent: 16px;}
+
+.form-container {max-width: 800px;}
+
+/*分页*/
+.pagination {}
+.pagination li {display: inline-block;margin-right: -1px;padding: 5px;border: 1px solid #e2e2e2;min-width: 20px;text-align: center;}
+.pagination li.active {background: #009688;color: #fff;border: 1px solid #009688;}
+.pagination li a {display: block;text-align: center;}
+
+.photo-list {margin: 5px 0;}
