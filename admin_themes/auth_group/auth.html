@@ -1,0 +1,103 @@
+{extend name="base" /}
+{block name="css"}
+<link rel="stylesheet" href="__CSS__/ztree-metro-style.css">
+{/block}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/auth_group/index')}">权限组</a></li>
+            <li class=""><a href="{:url('admin/auth_group/add')}">添加权限组</a></li>
+            <li class="layui-this">编辑权限组</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <ul id="tree" class="ztree"></ul>
+            </div>
+        </div>
+        <input type="hidden" id="group_id" name="id" value="{$id}">
+        <button class="layui-btn" id="auth-btn">授权</button>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/jquery.ztree.all.min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $(document).ready(function(){
+        /**
+         * 加载树形授权菜单
+         */
+        var _id = $("#group_id").val();
+        var tree = $("#tree");
+        var zTree;
+
+        // zTree 配置项
+        var setting = {
+            check: {
+                enable: true
+            },
+            view: {
+                dblClickExpand: false,
+                showLine: true,
+                showIcon: false,
+                selectedMulti: false
+            },
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pid",
+                    rootpid: ""
+                },
+                key: {
+                    name: "title"
+                }
+            }
+        };
+
+        $.ajax({
+            url: "{:url('admin/auth_group/getJson')}",
+            type: "post",
+            dataType: "json",
+            cache: false,
+            data: {
+                id: _id
+            },
+            success: function (data) {
+                zTree = $.fn.zTree.init(tree, setting, data);
+            }
+        });
+
+        /**
+         * 授权提交
+         */
+        $("#auth-btn").on("click", function () {
+            var checked_ids,auth_rule_ids = [];
+            checked_ids = zTree.getCheckedNodes(); // 获取当前选中的checkbox
+            $.each(checked_ids, function (index, item) {
+                auth_rule_ids.push(item.id);
+            });
+            $.ajax({
+                url: "{:url('admin/auth_group/updateAuthGroupRule')}",
+                type: "post",
+                cache: false,
+                data: {
+                    id: _id,
+                    auth_rule_ids: auth_rule_ids
+                },
+                success: function (data) {
+                    if(data.code === 1){
+                        setTimeout(function () {
+                            location.href = data.url;
+                        }, 1000);
+                    }
+                    layer.msg(data.msg);
+                }
+            });
+        });
+    });
+</script>
+{/block}
