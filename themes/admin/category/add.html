@@ -92,13 +92,11 @@
 </div>
 {/block}
 {block name="js"}
-<script src="__JS__/kindeditor/kindeditor.config.js"></script>
-<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+<script src="__JS__/ueditor/ueditor.config.js"></script>
+<script src="__JS__/ueditor/ueditor.all.min.js"></script>
 {/block}
 {block name="script"}
 <script>
-    KindEditor.ready(function(K) {
-        K.create('#content', KindEditorOptions);
-    });
+    var ue = UE.getEditor('content');
 </script>
 {/block}
