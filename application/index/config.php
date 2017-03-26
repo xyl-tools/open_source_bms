@@ -6,6 +6,6 @@ return [
 
     'template' => [
         // 模板路径
-        'view_path' => '../themes/default/',
+        'view_path' => './themes/default/',
     ],
 ];
