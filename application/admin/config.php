@@ -7,6 +7,6 @@ return [
 
     'template' => [
         // 模板路径
-        'view_path' => '../admin_themes/'
+        'view_path' => './themes/admin/'
     ],
 ];
