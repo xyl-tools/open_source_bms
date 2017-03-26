@@ -52,7 +52,7 @@ return [
     'controller_suffix'      => false,
 
     // auth配置
-    'auth'    => [
+    'auth'                   => [
         // 权限开关
         'auth_on'           => 1,
         // 认证方式，1为实时认证；2为登录认证。
@@ -68,10 +68,10 @@ return [
     ],
 
     // 全站加密密钥（开发新站点前请修改此项）
-    'salt'    => '1dFlxLhiuLqnUZe9kA',
+    'salt'                   => '1dFlxLhiuLqnUZe9kA',
 
     // 验证码配置
-    'captcha' => [
+    'captcha'                => [
         // 验证码字符集合
         'codeSet'  => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',
         // 验证码字体大小(px)
@@ -152,7 +152,7 @@ return [
     // | 模板设置
     // +----------------------------------------------------------------------
 
-    'template'               => [
+    'template'              => [
         // 模板引擎类型 支持 php think 支持扩展
         'type'         => 'Think',
         // 模板路径
@@ -172,36 +172,40 @@ return [
     ],
 
     // 手机模板开启
-    'mobile_theme' => false,
+    'mobile_theme'          => false,
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [
-        '__UPLOAD__' => '/uploads'
+    'view_replace_str'      => [
+        '__UPLOAD__' => '/public/uploads',
+        '__STATIC__' => '/public/static',
+        '__IMAGES__' => '/public/static/images',
+        '__JS__'     => '/public/static/js',
+        '__CSS__'    => '/public/static/css',
     ],
 
     // 默认跳转页面对应的模板文件
-    'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
-    'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
+    'dispatch_success_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
+    'dispatch_error_tmpl'   => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
 
     // +----------------------------------------------------------------------
     // | 异常及错误设置
     // +----------------------------------------------------------------------
 
     // 异常页面的模板文件
-    'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
+    'exception_tmpl'        => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
 
     // 错误显示信息,非调试模式有效
-    'error_message'          => '页面错误！请稍后再试～',
+    'error_message'         => '页面错误！请稍后再试～',
     // 显示错误信息
-    'show_error_msg'         => false,
+    'show_error_msg'        => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
-    'exception_handle'       => '',
+    'exception_handle'      => '',
 
     // +----------------------------------------------------------------------
     // | 日志设置
     // +----------------------------------------------------------------------
 
-    'log'                    => [
+    'log'   => [
         // 日志记录方式，内置 file socket 支持扩展
         'type'  => 'File',
         // 日志保存目录
@@ -213,16 +217,16 @@ return [
     // +----------------------------------------------------------------------
     // | Trace设置 开启 app_trace 后 有效
     // +----------------------------------------------------------------------
-    'trace'                  => [
+    'trace' => [
         // 内置Html Console 支持扩展
-        'type' => 'Html',
+        'type' => 'Console',
     ],
 
     // +----------------------------------------------------------------------
     // | 缓存设置
     // +----------------------------------------------------------------------
 
-    'cache'                  => [
+    'cache' => [
         // 驱动方式
         'type'   => 'File',
         // 缓存保存目录
@@ -237,7 +241,7 @@ return [
     // | 会话设置
     // +----------------------------------------------------------------------
 
-    'session'                => [
+    'session'  => [
         'id'             => '',
         // SESSION_ID的提交变量,解决flash上传跨域
         'var_session_id' => '',
@@ -252,7 +256,7 @@ return [
     // +----------------------------------------------------------------------
     // | Cookie设置
     // +----------------------------------------------------------------------
-    'cookie'                 => [
+    'cookie'   => [
         // cookie 名称前缀
         'prefix'    => '',
         // cookie 保存时间
@@ -270,7 +274,7 @@ return [
     ],
 
     //分页配置
-    'paginate'               => [
+    'paginate' => [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
