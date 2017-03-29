@@ -3,6 +3,7 @@ namespace app\api\controller;
 
 use think\Controller;
 use org\UeditorUpload;
+use think\Session;
 
 /**
  * Ueditor编辑器统一上传接口
@@ -17,6 +18,14 @@ class Ueditor extends Controller
     protected function _initialize()
     {
         parent::_initialize();
+
+        if(!Session::get('admin_id')){
+            $result = [
+                'state' => 'ERROR'
+            ];
+
+            return json($result);
+        }
 
         $this->config = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents(ROOT_PATH . 'public/static/js/ueditor/php/config.json')), true);
         $this->action = $this->request->get('action');
