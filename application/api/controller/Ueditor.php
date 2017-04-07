@@ -27,7 +27,7 @@ class Ueditor extends Controller
             return json($result);
         }
 
-        $this->config = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents(ROOT_PATH . 'public/static/js/ueditor/php/config.json')), true);
+        $this->config = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents(ROOT_PATH . 'public/static/js/ueditor/config.json')), true);
         $this->action = $this->request->get('action');
     }
 
@@ -50,21 +50,21 @@ class Ueditor extends Controller
             case 'uploadvideo':
                 /* 上传文件 */
             case 'uploadfile':
-                $result = $this->_upload();
+                $result = $this->upload();
                 break;
 
             /* 列出图片 */
             case 'listimage':
-                $result = $this->_list();
+                $result = $this->getList();
                 break;
             /* 列出文件 */
             case 'listfile':
-                $result = $this->_list();
+                $result = $this->getList();
                 break;
 
             /* 抓取远程文件 */
             case 'catchimage':
-                $result = $this->_crawler();
+                $result = $this->crawler();
                 break;
 
             default:
@@ -92,7 +92,7 @@ class Ueditor extends Controller
      * 上传附件和上传视频
      * @return array
      */
-    private function _upload()
+    private function upload()
     {
         /* 上传配置 */
         $base64 = "upload";
@@ -157,7 +157,7 @@ class Ueditor extends Controller
      * 获取已上传的文件列表
      * @return array
      */
-    private function _list()
+    private function getList()
     {
         /* 判断类型 */
         switch ($this->action) {
@@ -183,7 +183,7 @@ class Ueditor extends Controller
 
         /* 获取文件列表 */
         $path  = $_SERVER['DOCUMENT_ROOT'] . (substr($path, 0, 1) == "/" ? "" : "/") . $path;
-        $files = $this->_getFiles($path, $allowFiles);
+        $files = $this->getFiles($path, $allowFiles);
         if (!count($files)) {
             return [
                 "state" => "no match file",
@@ -219,7 +219,7 @@ class Ueditor extends Controller
      * 抓取远程图片
      * @return array
      */
-    private function _crawler()
+    private function crawler()
     {
         /* 上传配置 */
         $config    = [
@@ -265,7 +265,7 @@ class Ueditor extends Controller
      * @param array  $files
      * @return array|null
      */
-    private function _getFiles($path, $allowFiles, &$files = [])
+    private function getFiles($path, $allowFiles, &$files = [])
     {
         if (!is_dir($path)) return null;
         if (substr($path, strlen($path) - 1) != '/') $path .= '/';
@@ -274,7 +274,7 @@ class Ueditor extends Controller
             if ($file != '.' && $file != '..') {
                 $path2 = $path . $file;
                 if (is_dir($path2)) {
-                    $this->_getFiles($path2, $allowFiles, $files);
+                    $this->getFiles($path2, $allowFiles, $files);
                 } else {
                     if (preg_match("/\.(" . $allowFiles . ")$/i", $file)) {
                         $files[] = [
