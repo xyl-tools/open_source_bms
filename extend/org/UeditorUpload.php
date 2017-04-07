@@ -65,6 +65,17 @@ class UeditorUpload
      */
     private function upFile()
     {
+        if (!isset($_FILES[$this->fileField])) {
+            $postMaxSize       = ini_get('post_max_size');
+            $uploadMaxFileSize = ini_get('upload_max_filesize');
+
+            $this->stateInfo = '$_FILES数组未接收到上传文件数据，请检查上传文件大小是否超出PHP配置文件post_max_size、upload_max_filesize设置项，';
+            $this->stateInfo .= '当前post_max_size限制大小为' . $postMaxSize;
+            $this->stateInfo .= '，当前upload_max_filesize限制大小为' . $uploadMaxFileSize;
+
+            return;
+        }
+
         $file = $this->file = $_FILES[$this->fileField];
         if (!$file) {
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_NOT_FOUND");
