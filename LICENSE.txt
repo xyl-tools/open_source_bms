@@ -1,5 +1,5 @@
-Think Admin遵循Apache2开源协议发布，并提供免费使用。
-版权所有Copyright © 2016 by Think Admin (https://github.com/xiayulei/think_admin)
+Open Source BMS遵循Apache2开源协议发布，并提供免费使用。
+版权所有Copyright © 2016-2017 by Open Source BMS (https://github.com/xiayulei/open_source_bms)
 All rights reserved。
 
 Apache Licence是著名的非盈利开源组织Apache采用的协议。
