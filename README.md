@@ -39,6 +39,6 @@
 
 ## 版权信息
 
-Think Admin遵循Apache2开源协议发布，并提供免费使用。
+Open Source BMS遵循Apache2开源协议发布，并提供免费使用。
 
-版权所有Copyright © 2016-2017 by Think Admin All rights reserved。
+版权所有Copyright © 2016-2017 by Open Source BMS All rights reserved。
