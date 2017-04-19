@@ -5,7 +5,7 @@
 
 ## 安装使用：
 * 方式一：git克隆下载，请执行`composer install`命令进行完整安装
-* 方式二：非git用户请下载完整版，可以在`releases`中选择`think_admin_full`版本下载，
+* 方式二：非git用户请下载完整版，完整版无须执行`composer install`命令
 * 数据库文件为`open_source_bms.sql`
 * 下载程序至本地，请搭建虚拟域名，并开启URL重写（必须）
 * 站点开发前，建议修改`application`目录下的`config`配置文件，找到`salt`项，此项为全站加密公用盐值，请先修改，然后使用`md5('新密码' . config('salt'))`生成新密码，替换`admin_user`表中的默认管理员密码
