@@ -1,7 +1,8 @@
 ## Open Source BMS（原Think Admin）是什么?
 全称Open Source Background Manager System，开源后台管理系统
 一个节省开发时间的后台管理系统，程序基于ThinkPHP 5开发，后台UI使用LayUI搭建
-官网地址：http://opensourcebms.com
+
+### 官网地址：http://opensourcebms.com
 
 ## 安装使用：
 * 方式一：git克隆下载，请执行`composer install`命令进行完整安装
