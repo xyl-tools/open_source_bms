@@ -24,6 +24,6 @@ class AdminUser extends Validate
         'password.confirm'         => '两次输入密码不一致',
         'confirm_password.confirm' => '两次输入密码不一致',
         'status.require'           => '请选择状态',
-        'group_id'                 => '请选择所属权限组'
+        'group_id.require'         => '请选择所属权限组'
     ];
 }
