@@ -68,7 +68,7 @@ return [
     ],
 
     // 全站加密密钥（开发新站点前请修改此项）
-    'salt'                   => '1dFlxLhiuLqnUZe9kA',
+    'salt'                   => 'fwefadfsdsafds',
 
     // 验证码配置
     'captcha'                => [

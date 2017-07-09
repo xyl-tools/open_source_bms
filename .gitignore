@@ -3,3 +3,4 @@
 runtime/
 vendor/
 thinkphp
+.env
