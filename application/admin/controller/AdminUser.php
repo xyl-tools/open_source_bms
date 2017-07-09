@@ -15,16 +15,16 @@ use think\Db;
  */
 class AdminUser extends AdminBase
 {
-    protected $admin_user_model;
-    protected $auth_group_model;
-    protected $auth_group_access_model;
+    protected $adminUserModel;
+    protected $authGroupModel;
+    protected $authGroupAccessModel;
 
     protected function _initialize()
     {
         parent::_initialize();
-        $this->admin_user_model        = new AdminUserModel();
-        $this->auth_group_model        = new AuthGroupModel();
-        $this->auth_group_access_model = new AuthGroupAccessModel();
+        $this->adminUserModel        = new AdminUserModel();
+        $this->authGroupModel        = new AuthGroupModel();
+        $this->authGroupAccessModel = new AuthGroupAccessModel();
     }
 
     /**
@@ -33,7 +33,7 @@ class AdminUser extends AdminBase
      */
     public function index()
     {
-        $admin_user_list = $this->admin_user_model->select();
+        $admin_user_list = $this->adminUserModel->select();
 
         return $this->fetch('index', ['admin_user_list' => $admin_user_list]);
     }
@@ -44,7 +44,7 @@ class AdminUser extends AdminBase
      */
     public function add()
     {
-        $auth_group_list = $this->auth_group_model->select();
+        $auth_group_list = $this->authGroupModel->select();
 
         return $this->fetch('add', ['auth_group_list' => $auth_group_list]);
     }
@@ -63,10 +63,10 @@ class AdminUser extends AdminBase
                 $this->error($validate_result);
             } else {
                 $data['password'] = md5($data['password'] . Config::get('salt'));
-                if ($this->admin_user_model->allowField(true)->save($data)) {
-                    $auth_group_access['uid']      = $this->admin_user_model->id;
+                if ($this->adminUserModel->allowField(true)->save($data)) {
+                    $auth_group_access['uid']      = $this->adminUserModel->id;
                     $auth_group_access['group_id'] = $group_id;
-                    $this->auth_group_access_model->save($auth_group_access);
+                    $this->authGroupAccessModel->save($auth_group_access);
                     $this->success('保存成功');
                 } else {
                     $this->error('保存失败');
@@ -82,9 +82,9 @@ class AdminUser extends AdminBase
      */
     public function edit($id)
     {
-        $admin_user             = $this->admin_user_model->find($id);
-        $auth_group_list        = $this->auth_group_model->select();
-        $auth_group_access      = $this->auth_group_access_model->where('uid', $id)->find();
+        $admin_user             = $this->adminUserModel->find($id);
+        $auth_group_list        = $this->authGroupModel->select();
+        $auth_group_access      = $this->authGroupAccessModel->where('uid', $id)->find();
         $admin_user['group_id'] = $auth_group_access['group_id'];
 
         return $this->fetch('edit', ['admin_user' => $admin_user, 'auth_group_list' => $auth_group_list]);
@@ -104,7 +104,7 @@ class AdminUser extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                $admin_user = $this->admin_user_model->find($id);
+                $admin_user = $this->adminUserModel->find($id);
 
                 $admin_user->id       = $id;
                 $admin_user->username = $data['username'];
@@ -116,7 +116,7 @@ class AdminUser extends AdminBase
                 if ($admin_user->save() !== false) {
                     $auth_group_access['uid']      = $id;
                     $auth_group_access['group_id'] = $group_id;
-                    $this->auth_group_access_model->where('uid', $id)->update($auth_group_access);
+                    $this->authGroupAccessModel->where('uid', $id)->update($auth_group_access);
                     $this->success('更新成功');
                 } else {
                     $this->error('更新失败');
@@ -134,8 +134,8 @@ class AdminUser extends AdminBase
         if ($id == 1) {
             $this->error('默认管理员不可删除');
         }
-        if ($this->admin_user_model->destroy($id)) {
-            $this->auth_group_access_model->where('uid', $id)->delete();
+        if ($this->adminUserModel->destroy($id)) {
+            $this->authGroupAccessModel->where('uid', $id)->delete();
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

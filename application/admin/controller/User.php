@@ -13,12 +13,12 @@ use think\Db;
  */
 class User extends AdminBase
 {
-    protected $user_model;
+    protected $userModel;
 
     protected function _initialize()
     {
         parent::_initialize();
-        $this->user_model = new UserModel();
+        $this->userModel = new UserModel();
     }
 
     /**
@@ -33,7 +33,7 @@ class User extends AdminBase
         if ($keyword) {
             $map['username|mobile|email'] = ['like', "%{$keyword}%"];
         }
-        $user_list = $this->user_model->where($map)->order('id DESC')->paginate(15, false, ['page' => $page]);
+        $user_list = $this->userModel->where($map)->order('id DESC')->paginate(15, false, ['page' => $page]);
 
         return $this->fetch('index', ['user_list' => $user_list, 'keyword' => $keyword]);
     }
@@ -60,7 +60,7 @@ class User extends AdminBase
                 $this->error($validate_result);
             } else {
                 $data['password'] = md5($data['password'] . Config::get('salt'));
-                if ($this->user_model->allowField(true)->save($data)) {
+                if ($this->userModel->allowField(true)->save($data)) {
                     $this->success('保存成功');
                 } else {
                     $this->error('保存失败');
@@ -76,7 +76,7 @@ class User extends AdminBase
      */
     public function edit($id)
     {
-        $user = $this->user_model->find($id);
+        $user = $this->userModel->find($id);
 
         return $this->fetch('edit', ['user' => $user]);
     }
@@ -94,7 +94,7 @@ class User extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                $user           = $this->user_model->find($id);
+                $user           = $this->userModel->find($id);
                 $user->id       = $id;
                 $user->username = $data['username'];
                 $user->mobile   = $data['mobile'];
@@ -118,7 +118,7 @@ class User extends AdminBase
      */
     public function delete($id)
     {
-        if ($this->user_model->destroy($id)) {
+        if ($this->userModel->destroy($id)) {
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

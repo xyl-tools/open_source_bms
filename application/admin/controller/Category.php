@@ -14,15 +14,15 @@ use think\Db;
 class Category extends AdminBase
 {
 
-    protected $category_model;
-    protected $article_model;
+    protected $categoryModel;
+    protected $articleModel;
 
     protected function _initialize()
     {
         parent::_initialize();
-        $this->category_model = new CategoryModel();
-        $this->article_model  = new ArticleModel();
-        $category_level_list  = $this->category_model->getLevelList();
+        $this->categoryModel = new CategoryModel();
+        $this->articleModel  = new ArticleModel();
+        $category_level_list  = $this->categoryModel->getLevelList();
 
         $this->assign('category_level_list', $category_level_list);
     }
@@ -58,7 +58,7 @@ class Category extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->category_model->allowField(true)->save($data)) {
+                if ($this->categoryModel->allowField(true)->save($data)) {
                     $this->success('保存成功');
                 } else {
                     $this->error('保存失败');
@@ -74,7 +74,7 @@ class Category extends AdminBase
      */
     public function edit($id)
     {
-        $category = $this->category_model->find($id);
+        $category = $this->categoryModel->find($id);
 
         return $this->fetch('edit', ['category' => $category]);
     }
@@ -92,11 +92,11 @@ class Category extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                $children = $this->category_model->where(['path' => ['like', "%,{$id},%"]])->column('id');
+                $children = $this->categoryModel->where(['path' => ['like', "%,{$id},%"]])->column('id');
                 if (in_array($data['pid'], $children)) {
                     $this->error('不能移动到自己的子分类');
                 } else {
-                    if ($this->category_model->allowField(true)->save($data, $id) !== false) {
+                    if ($this->categoryModel->allowField(true)->save($data, $id) !== false) {
                         $this->success('更新成功');
                     } else {
                         $this->error('更新失败');
@@ -112,8 +112,8 @@ class Category extends AdminBase
      */
     public function delete($id)
     {
-        $category = $this->category_model->where(['pid' => $id])->find();
-        $article  = $this->article_model->where(['cid' => $id])->find();
+        $category = $this->categoryModel->where(['pid' => $id])->find();
+        $article  = $this->articleModel->where(['cid' => $id])->find();
 
         if (!empty($category)) {
             $this->error('此分类下存在子分类，不可删除');
@@ -121,7 +121,7 @@ class Category extends AdminBase
         if (!empty($article)) {
             $this->error('此分类下存在文章，不可删除');
         }
-        if ($this->category_model->destroy($id)) {
+        if ($this->categoryModel->destroy($id)) {
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

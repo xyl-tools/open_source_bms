@@ -12,12 +12,12 @@ use think\Db;
  */
 class Link extends AdminBase
 {
-    protected $link_model;
+    protected $linkModel;
 
     protected function _initialize()
     {
         parent::_initialize();
-        $this->link_model = new LinkModel();
+        $this->linkModel = new LinkModel();
     }
 
     /**
@@ -26,7 +26,7 @@ class Link extends AdminBase
      */
     public function index()
     {
-        $link_list = $this->link_model->select();
+        $link_list = $this->linkModel->select();
 
         return $this->fetch('index', ['link_list' => $link_list]);
     }
@@ -52,7 +52,7 @@ class Link extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->link_model->allowField(true)->save($data)) {
+                if ($this->linkModel->allowField(true)->save($data)) {
                     $this->success('保存成功');
                 } else {
                     $this->error('保存失败');
@@ -68,7 +68,7 @@ class Link extends AdminBase
      */
     public function edit($id)
     {
-        $link = $this->link_model->find($id);
+        $link = $this->linkModel->find($id);
 
         return $this->fetch('edit', ['link' => $link]);
     }
@@ -86,7 +86,7 @@ class Link extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->link_model->allowField(true)->save($data, $id) !== false) {
+                if ($this->linkModel->allowField(true)->save($data, $id) !== false) {
                     $this->success('更新成功');
                 } else {
                     $this->error('更新失败');
@@ -101,7 +101,7 @@ class Link extends AdminBase
      */
     public function delete($id)
     {
-        if ($this->link_model->destroy($id)) {
+        if ($this->linkModel->destroy($id)) {
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

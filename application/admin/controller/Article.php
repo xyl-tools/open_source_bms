@@ -12,16 +12,16 @@ use app\common\controller\AdminBase;
  */
 class Article extends AdminBase
 {
-    protected $article_model;
-    protected $category_model;
+    protected $articleModel;
+    protected $categoryModel;
 
     protected function _initialize()
     {
         parent::_initialize();
-        $this->article_model  = new ArticleModel();
-        $this->category_model = new CategoryModel();
+        $this->articleModel  = new ArticleModel();
+        $this->categoryModel = new CategoryModel();
 
-        $category_level_list = $this->category_model->getLevelList();
+        $category_level_list = $this->categoryModel->getLevelList();
         $this->assign('category_level_list', $category_level_list);
     }
 
@@ -38,7 +38,7 @@ class Article extends AdminBase
         $field = 'id,title,cid,author,reading,status,publish_time,sort';
 
         if ($cid > 0) {
-            $category_children_ids = $this->category_model->where(['path' => ['like', "%,{$cid},%"]])->column('id');
+            $category_children_ids = $this->categoryModel->where(['path' => ['like', "%,{$cid},%"]])->column('id');
             $category_children_ids = (!empty($category_children_ids) && is_array($category_children_ids)) ? implode(',', $category_children_ids) . ',' . $cid : $cid;
             $map['cid']            = ['IN', $category_children_ids];
         }
@@ -47,8 +47,8 @@ class Article extends AdminBase
             $map['title'] = ['like', "%{$keyword}%"];
         }
 
-        $article_list  = $this->article_model->field($field)->where($map)->order(['publish_time' => 'DESC'])->paginate(15, false, ['page' => $page]);
-        $category_list = $this->category_model->column('name', 'id');
+        $article_list  = $this->articleModel->field($field)->where($map)->order(['publish_time' => 'DESC'])->paginate(15, false, ['page' => $page]);
+        $category_list = $this->categoryModel->column('name', 'id');
 
         return $this->fetch('index', ['article_list' => $article_list, 'category_list' => $category_list, 'cid' => $cid, 'keyword' => $keyword]);
     }
@@ -74,7 +74,7 @@ class Article extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->article_model->allowField(true)->save($data)) {
+                if ($this->articleModel->allowField(true)->save($data)) {
                     $this->success('保存成功');
                 } else {
                     $this->error('保存失败');
@@ -90,7 +90,7 @@ class Article extends AdminBase
      */
     public function edit($id)
     {
-        $article = $this->article_model->find($id);
+        $article = $this->articleModel->find($id);
 
         return $this->fetch('edit', ['article' => $article]);
     }
@@ -108,7 +108,7 @@ class Article extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->article_model->allowField(true)->save($data, $id) !== false) {
+                if ($this->articleModel->allowField(true)->save($data, $id) !== false) {
                     $this->success('更新成功');
                 } else {
                     $this->error('更新失败');
@@ -126,7 +126,7 @@ class Article extends AdminBase
     {
         $id = $ids ? $ids : $id;
         if ($id) {
-            if ($this->article_model->destroy($id)) {
+            if ($this->articleModel->destroy($id)) {
                 $this->success('删除成功');
             } else {
                 $this->error('删除失败');
@@ -150,7 +150,7 @@ class Article extends AdminBase
             foreach ($ids as $value) {
                 $data[] = ['id' => $value, 'status' => $status];
             }
-            if ($this->article_model->saveAll($data)) {
+            if ($this->articleModel->saveAll($data)) {
                 $this->success('操作成功');
             } else {
                 $this->error('操作失败');

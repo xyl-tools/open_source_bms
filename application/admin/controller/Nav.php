@@ -13,13 +13,13 @@ use think\Db;
 class Nav extends AdminBase
 {
 
-    protected $nav_model;
+    protected $navModel;
 
     protected function _initialize()
     {
         parent::_initialize();
-        $this->nav_model = new NavModel();
-        $nav_list        = $this->nav_model->order(['sort' => 'ASC', 'id' => 'ASC'])->select();
+        $this->navModel = new NavModel();
+        $nav_list        = $this->navModel->order(['sort' => 'ASC', 'id' => 'ASC'])->select();
         $nav_level_list  = array2level($nav_list);
 
         $this->assign('nav_level_list', $nav_level_list);
@@ -56,7 +56,7 @@ class Nav extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->nav_model->save($data)) {
+                if ($this->navModel->save($data)) {
                     $this->success('保存成功');
                 } else {
                     $this->error('保存失败');
@@ -72,7 +72,7 @@ class Nav extends AdminBase
      */
     public function edit($id)
     {
-        $nav = $this->nav_model->find($id);
+        $nav = $this->navModel->find($id);
 
         return $this->fetch('edit', ['nav' => $nav]);
     }
@@ -90,7 +90,7 @@ class Nav extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                if ($this->nav_model->save($data, $id) !== false) {
+                if ($this->navModel->save($data, $id) !== false) {
                     $this->success('更新成功');
                 } else {
                     $this->error('更新失败');
@@ -105,7 +105,7 @@ class Nav extends AdminBase
      */
     public function delete($id)
     {
-        if ($this->nav_model->destroy($id)) {
+        if ($this->navModel->destroy($id)) {
             $this->success('删除成功');
         } else {
             $this->error('删除失败');
