@@ -2,6 +2,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\AdminBase;
+use app\common\model\AdminUser as AdminUserModel;
 use think\Config;
 use think\Db;
 use think\Session;
@@ -30,13 +31,15 @@ class ChangePassword extends AdminBase
         if ($this->request->isPost()) {
             $admin_id    = Session::get('admin_id');
             $data   = $this->request->param();
-            $result = Db::name('admin_user')->find($admin_id);
+            /*@ver $user AdminUserModel*/
 
-            if ($result['password'] == md5($data['old_password'] . Config::get('salt'))) {
+            $user = AdminUserModel::get($admin_id);
+
+
+            if ($user->verifyPassword($data['old_password'])) {
                 if ($data['password'] == $data['confirm_password']) {
-                    $new_password = md5($data['password'] . Config::get('salt'));
-                    $res          = Db::name('admin_user')->where(['id' => $admin_id])->setField('password', $new_password);
-
+                    $user->password = $data['password'];
+                    $res          = $user->save();
                     if ($res !== false) {
                         $this->success('修改成功');
                     } else {

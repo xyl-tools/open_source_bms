@@ -5,6 +5,7 @@ use think\Config;
 use think\Controller;
 use think\Db;
 use think\Session;
+use app\common\model\AdminUser as AdminUserModel;
 
 /**
  * 后台登录
@@ -35,24 +36,16 @@ class Login extends Controller
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                $where['username'] = $data['username'];
-                $where['password'] = md5($data['password'] . Config::get('salt'));
-
-                $admin_user = Db::name('admin_user')->field('id,username,status')->where($where)->find();
-
-                if (!empty($admin_user)) {
-                    if ($admin_user['status'] != 1) {
+                $adminUser = AdminUserModel::get(['username'=>$data['username']]);
+                if (!empty($adminUser)  && $adminUser->verifyPassword($data['password'])) {
+                    if ($adminUser->status != 1) {
                         $this->error('当前用户已禁用');
                     } else {
-                        Session::set('admin_id', $admin_user['id']);
-                        Session::set('admin_name', $admin_user['username']);
-                        Db::name('admin_user')->update(
-                            [
-                                'last_login_time' => date('Y-m-d H:i:s', time()),
-                                'last_login_ip'   => $this->request->ip(),
-                                'id'              => $admin_user['id']
-                            ]
-                        );
+                        Session::set('admin_id', $adminUser['id']);
+                        Session::set('admin_name', $adminUser['username']);
+                        $adminUser->last_login_ip = $this->request->ip();
+                        $adminUser->last_login_time = date('Y-m-d H:i:s');
+                        $adminUser->save();
                         $this->success('登录成功', 'admin/index/index');
                     }
                 } else {
