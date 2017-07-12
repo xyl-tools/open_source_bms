@@ -3,14 +3,14 @@ namespace app\admin\controller;
 
 use app\common\model\AuthGroup as AuthGroupModel;
 use app\common\model\AuthRule as AuthRuleModel;
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 
 /**
  * 权限组
  * Class AuthGroup
  * @package app\admin\controller
  */
-class AuthGroup extends AdminBase
+class AuthGroupController extends AdminBaseController
 {
     protected $authGroupModel;
     protected $authRuleModel;

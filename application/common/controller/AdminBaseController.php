@@ -13,7 +13,7 @@ use think\Session;
  * Class AdminBase
  * @package app\common\controller
  */
-class AdminBase extends Controller
+class AdminBaseController extends Controller
 {
     protected function _initialize()
     {

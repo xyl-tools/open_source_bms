@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-use app\common\controller\HomeBase;
+use app\common\controller\HomeBaseController;
 use app\common\model\Article as ArticleModel;
 use app\common\model\Category as CategoryModel;
 use think\Controller;
@@ -12,7 +12,7 @@ use think\Db;
  * Class Article
  * @package app\index\controller
  */
-class Article extends HomeBase
+class ArticleController extends HomeBaseController
 {
     public function index()
     {

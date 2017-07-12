@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-use app\common\controller\HomeBase;
+use app\common\controller\HomeBaseController;
 use app\common\model\Category as CategoryModel;
 use think\Controller;
 use think\Db;
@@ -11,7 +11,7 @@ use think\Db;
  * Class ShowList
  * @package app\index\controller
  */
-class ShowList extends HomeBase
+class ShowListController extends HomeBaseController
 {
     public function index()
     {

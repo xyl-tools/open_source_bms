@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 use think\Cache;
 use think\Db;
 
@@ -10,7 +10,7 @@ use think\Db;
  * Class System
  * @package app\admin\controller
  */
-class System extends AdminBase
+class SystemController extends AdminBaseController
 {
     public function _initialize()
     {

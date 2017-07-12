@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 
 use app\common\model\AuthRule as AuthRuleModel;
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 use think\Db;
 
 /**
@@ -10,7 +10,7 @@ use think\Db;
  * Class Menu
  * @package app\admin\controller
  */
-class Menu extends AdminBase
+class MenuController extends AdminBaseController
 {
 
     protected $authRuleModel;

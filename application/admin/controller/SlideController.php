@@ -3,7 +3,7 @@ namespace app\admin\controller;
 
 use app\common\model\SlideCategory as SlideCategoryModel;
 use app\common\model\Slide as SlideModel;
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 use think\Db;
 
 /**
@@ -11,7 +11,7 @@ use think\Db;
  * Class Slide
  * @package app\admin\controller
  */
-class Slide extends AdminBase
+class SlideController extends AdminBaseController
 {
 
     protected function _initialize()

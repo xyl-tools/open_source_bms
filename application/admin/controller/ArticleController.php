@@ -3,14 +3,14 @@ namespace app\admin\controller;
 
 use app\common\model\Article as ArticleModel;
 use app\common\model\Category as CategoryModel;
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 
 /**
  * 文章管理
  * Class Article
  * @package app\admin\controller
  */
-class Article extends AdminBase
+class ArticleController extends AdminBaseController
 {
     protected $articleModel;
     protected $categoryModel;

@@ -9,17 +9,19 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+
+
 return [
     // 数据库类型
-    'type'            => 'mysql',
+    'type'            => \think\Env::get('database.type','mysql'),
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => \think\Env::get('database.host','127.0.0.1'),
     // 数据库名
     'database'        => 'open_source_bms',
     // 用户名
-    'username'        => 'root',
+    'username'        => \think\Env::get('database.username','root'),
     // 密码
-    'password'        => '',
+    'password'        => \think\Env::get('database.password','root'),
     // 端口
     'hostport'        => '',
     // 连接dsn

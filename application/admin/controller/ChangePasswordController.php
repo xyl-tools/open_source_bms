@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 use app\common\model\AdminUser as AdminUserModel;
 use think\Config;
 use think\Db;
@@ -12,7 +12,7 @@ use think\Session;
  * Class ChangePassword
  * @package app\admin\controller
  */
-class ChangePassword extends AdminBase
+class ChangePasswordController extends AdminBaseController
 {
     /**
      * 修改密码

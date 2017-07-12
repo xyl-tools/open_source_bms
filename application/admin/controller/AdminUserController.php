@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use app\common\model\AdminUser as AdminUserModel;
 use app\common\model\AuthGroup as AuthGroupModel;
 use app\common\model\AuthGroupAccess as AuthGroupAccessModel;
-use app\common\controller\AdminBase;
+use app\common\controller\AdminBaseController;
 use think\Config;
 use think\Db;
 
@@ -13,7 +13,7 @@ use think\Db;
  * Class AdminUser
  * @package app\admin\controller
  */
-class AdminUser extends AdminBase
+class AdminUserController extends AdminBaseController
 {
     protected $adminUserModel;
     protected $authGroupModel;

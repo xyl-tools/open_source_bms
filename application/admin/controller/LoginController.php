@@ -12,7 +12,7 @@ use app\common\model\AdminUser as AdminUserModel;
  * Class Login
  * @package app\admin\controller
  */
-class Login extends Controller
+class LoginController extends Controller
 {
     /**
      * 后台登录

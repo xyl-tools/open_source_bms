@@ -5,7 +5,7 @@ use think\Cache;
 use think\Controller;
 use think\Db;
 
-class HomeBase extends Controller
+class HomeBaseController extends Controller
 {
 
     protected function _initialize()
