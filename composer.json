@@ -19,7 +19,8 @@
         "php": ">=5.4.0",
         "topthink/framework": "^5.0",
         "topthink/think-captcha": "^1.0",
-        "topthink/think-migration": "^1.1"
+        "topthink/think-migration": "^1.1",
+        "zoujingli/wechat-php-sdk": "^1.3"
     },
     "extra": {
         "think-path": "thinkphp"
