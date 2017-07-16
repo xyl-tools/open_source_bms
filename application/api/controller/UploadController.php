@@ -1,6 +1,7 @@
 <?php
 namespace app\api\controller;
 
+use app\common\model\UploadImages;
 use think\Controller;
 use think\Session;
 
@@ -37,22 +38,36 @@ class UploadController extends Controller
 
         $file = $this->request->file('file');
 
+
+
         $upload_path = str_replace('\\', '/', ROOT_PATH . 'public/uploads');
         $save_path   = '/uploads/';
-        $info        = $file->validate($config)->move($upload_path);
 
-        if ($info) {
-            $result = [
-                'error' => 0,
-                'url'   => str_replace('\\', '/', $save_path . $info->getSaveName())
-            ];
-        } else {
-            $result = [
-                'error'   => 1,
-                'message' => $file->getError()
-            ];
+
+        $result = [
+            'error'   => 1,
+            'message' => '',
+        ];
+        if(!$file->validate($config)->check()){
+            $result['message'] = $file->getError();
+        }else{
+            $upload = new UploadImages();
+            $info = $upload->upload($file,$upload_path,$save_path);
+            if(empty($info)){
+                $result['message'] = $upload->getError();
+            }else{
+                $result['error'] = 0;
+                $result['message'] = '上传成功';
+                $result['url'] = $info->url;
+            }
         }
-
         return json($result);
+    }
+
+    public function index()
+    {
+        $upload = new UploadImages();
+        $upload->name = 'xxxxxx';
+        die;
     }
 }
