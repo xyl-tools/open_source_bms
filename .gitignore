@@ -4,3 +4,4 @@ runtime/
 vendor/
 thinkphp
 .env
+public/uploads/

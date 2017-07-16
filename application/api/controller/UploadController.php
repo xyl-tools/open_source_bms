@@ -9,7 +9,7 @@ use think\Session;
  * Class Upload
  * @package app\api\controller
  */
-class Upload extends Controller
+class UploadController extends Controller
 {
     protected function _initialize()
     {

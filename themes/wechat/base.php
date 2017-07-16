@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="__JS__/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="__CSS__/font-awesome.min.css">
     <!--CSS引用-->
-    <block name="css"></block>
+    {block name="css"}{/block}
     <link rel="stylesheet" href="__CSS__/admin.css">
     <!--[if lt IE 9]>
     <script src="__CSS__/html5shiv.min.js"></script>
@@ -55,7 +55,7 @@
                 {/if}
                 {/foreach}
 
-                <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+                <li class="layui-nav-item" style="height: 0px; text-align: center"></li>
             </ul>
         </div>
     </div>
@@ -75,7 +75,8 @@
     // 定义全局JS变量
     var GV = {
         current_controller: "{$module}/{$controller|default=''}/",
-        base_url: "__STATIC__"
+        base_url: "__STATIC__",
+        upload: '<?= url('api/upload/upload')?>'
     };
 </script>
 <!--JS引用-->

@@ -10,7 +10,7 @@ use think\Session;
  * Class Ueditor
  * @package app\api\controller
  */
-class Ueditor extends Controller
+class UeditorController extends Controller
 {
     protected $config;
     protected $action;
