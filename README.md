@@ -1,4 +1,4 @@
-###与原来项目不一样了（think模型的使用）
+### 与原来项目不一样了（think模型的使用）
 未来可能会加上[Think.Admin](https://github.com/zoujingli/Think.Admin)微信管理功能
 ## Open Source BMS（原Think Admin）是什么?
 全称Open Source Background Manager System，开源后台管理系统
