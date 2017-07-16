@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\AdminBaseController;
-use app\common\model\AdminUser as AdminUserModel;
+use app\admin\model\AdminUser as AdminUserModel;
 use think\Config;
 use think\Db;
 use think\Session;

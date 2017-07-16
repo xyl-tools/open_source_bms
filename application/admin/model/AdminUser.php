@@ -1,20 +1,21 @@
 <?php
-namespace app\common\model;
+
+namespace app\admin\model;
 
 use think\Config;
 use think\Model;
 
 /**
- * 管理员模型
- * Class AdminUser Model
- * @package app\common\model
+ * This is the model class for table "os_admin_user".
+ *
  * @property integer $id
  * @property string $username
  * @property string $password
  * @property integer $status
- * @property string $createTime
+ * @property string $create_time
  * @property string $last_login_time
  * @property string $last_login_ip
+ * @property AuthGroupAccess $authGroupAccess
  */
 class AdminUser extends Model
 {
@@ -39,5 +40,13 @@ class AdminUser extends Model
 
     public function encrypt($val){
         return md5($val . Config::get('salt'));
+    }
+
+
+    public function authGroupAccess(){
+        return $this->hasOne('AuthGroupAccess','uid');
+    }
+    public function getGroupIdAttr(){
+        return $this->authGroupAccess->group_id;
     }
 }

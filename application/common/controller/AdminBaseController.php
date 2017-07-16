@@ -23,6 +23,7 @@ class AdminBaseController extends Controller
         $this->getMenu();
 
         // 输出当前请求控制器（配合后台侧边菜单选中状态）
+        $this->assign('module', Loader::parseName($this->request->module()));
         $this->assign('controller', Loader::parseName($this->request->controller()));
     }
 
@@ -62,7 +63,9 @@ class AdminBaseController extends Controller
         $admin_id = Session::get('admin_id');
         $auth     = new Auth();
 
-        $auth_rule_list = Db::name('auth_rule')->where('status', 1)->order(['sort' => 'DESC', 'id' => 'ASC'])->select();
+
+        $module = $this->request->module();
+        $auth_rule_list = Db::name('auth_rule')->where('status', 1)->where('name','like',$module.'/%')->order(['sort' => 'DESC', 'id' => 'ASC'])->select();
 
         foreach ($auth_rule_list as $value) {
             if ($auth->check($value['name'], $admin_id) || $admin_id == 1) {

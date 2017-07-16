@@ -5,7 +5,7 @@ use think\Config;
 use think\Controller;
 use think\Db;
 use think\Session;
-use app\common\model\AdminUser as AdminUserModel;
+use app\admin\model\AdminUser as AdminUserModel;
 
 /**
  * 后台登录

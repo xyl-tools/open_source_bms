@@ -95,7 +95,7 @@ class MakeModel extends Command
     {
 
         $this->db = new Db\Query();
-        $output->writeln('test command:');
+        $output->writeln('make model class file:');
 
         $className = $input->getOption('table');
         $tableName = Config::get('database.prefix').$className;
@@ -108,17 +108,18 @@ class MakeModel extends Command
          * @var View $view
          */
 
-        $property = '';
+        $property = [];
         foreach ($tableColumns as $column){
-            $property .= "* @property {$column['phpType']} \${$column['name']}\n";
+            $property[] = " * @property {$column['phpType']} \${$column['name']}";
         }
+        $property = join("\n",$property);
 
+        if(file_exists($info['path'].'/'.$className.'.php')){
+
+            $output->writeln('error: file exists.');
+            return false;
+        }
         $this->codeFile($property,$tableName,$className,$info['namespace'],$info['path']);
-
-
-
-
-
         $output->writeln($className);
     }
 
@@ -158,10 +159,10 @@ namespace {$namespace};
 use think\Model;
 
 /**
-* This is the model class for table "{$tableName}".
-*
+ * This is the model class for table "{$tableName}".
+ *
 {$property}
-*/
+ */
 class {$className} extends Model
 {
 

@@ -1,8 +1,8 @@
 <?php
 namespace app\admin\controller;
 
-use app\common\model\AuthGroup as AuthGroupModel;
-use app\common\model\AuthRule as AuthRuleModel;
+use app\admin\model\AuthGroup as AuthGroupModel;
+use app\admin\model\AuthRule as AuthRuleModel;
 use app\common\controller\AdminBaseController;
 
 /**

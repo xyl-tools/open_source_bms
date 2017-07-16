@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-use app\common\model\AuthRule as AuthRuleModel;
+use app\admin\model\AuthRule as AuthRuleModel;
 use app\common\controller\AdminBaseController;
 use think\Db;
 
