@@ -9,7 +9,7 @@ use think\Model;
 use think\Request;
 
 /**
- * This is the model class for table "os_upload_images".
+ * This is the model class for table "os_upload_attach".
  *
  * @property string $id
  * @property string $original
@@ -20,7 +20,7 @@ use think\Request;
  * @property integer $size
  * @property string $created_at
  */
-class UploadImages extends Model
+class UploadAttach extends Model
 {
     /**
      * @param File $file
@@ -30,7 +30,7 @@ class UploadImages extends Model
     public function upload($file,$uploadPath,$savePath){
         $md5 = static::hash($file->getPath().DS.$file->getFilename());
         /**
-         * @var UploadImages $fileData
+         * @var UploadAttach $fileData
          */
         $fileData = $this->where(['hash'=>$md5])->find();
         if(empty($fileData)){
@@ -39,9 +39,10 @@ class UploadImages extends Model
                 $this->error = $file->getError();
                 return false;
             }
-            $fileData = new UploadImages();
+            $fileData = new UploadAttach();
             $fileData->original = $info->getInfo('name');
             $fileData->file_name = $info->getFilename();
+            $fileData->file_type = $info->getMime();
             $fileData->hash = $md5;
             $fileData->url = str_replace('\\', '/', $savePath . $info->getSaveName());
             $fileData->path = $info->getPath();

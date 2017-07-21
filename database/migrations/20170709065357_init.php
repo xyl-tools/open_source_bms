@@ -32,6 +32,27 @@ class Init extends Migrator
     {
         $sql = file_get_contents('./open_source_bms.sql');
         $this->execute($sql);
+
+        $tableNames = [
+            'os_admin_user' => 'admin_user',
+            'os_article' => 'article',
+            'os_auth_group' => 'auth_group',
+            'os_auth_group_access' => 'auth_group_access',
+            'os_auth_rule' => 'auth_rule',
+            'os_category' => 'category',
+            'os_link' => 'link',
+            'os_nav' => 'nav',
+            'os_slide' => 'slide',
+            'os_slide_category' => 'slide_category',
+            'os_system' => 'system',
+            'os_user' => 'user',
+        ];
+        foreach ($tableNames as $key => $name){
+            $table = $this->table($key);
+            if($table->exists()){
+                $table->rename($name);
+            }
+        }
     }
     public function down()
     {
