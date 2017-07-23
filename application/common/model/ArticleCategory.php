@@ -4,7 +4,7 @@ namespace app\common\model;
 use think\Db;
 use think\Model;
 
-class Category extends Model
+class ArticleCategory extends Model
 {
     protected $insert = ['create_time'];
 

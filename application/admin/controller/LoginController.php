@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 
+use app\admin\model\AdminUser;
 use think\Config;
 use think\Controller;
 use think\Db;
@@ -53,6 +54,17 @@ class LoginController extends Controller
                 }
             }
         }
+    }
+
+    /**
+     * 设置管理员密码
+     */
+    public function reset()
+    {
+        $model = new AdminUser();
+        $admin = $model->find(1);
+        $admin->password = 'admin';
+        var_dump($admin->save());
     }
 
     /**

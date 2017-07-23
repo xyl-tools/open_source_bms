@@ -2,7 +2,7 @@
 namespace app\index\controller;
 
 use app\common\controller\HomeBaseController;
-use app\common\model\Category as CategoryModel;
+use app\common\model\ArticleCategory as CategoryModel;
 use think\Controller;
 use think\Db;
 
