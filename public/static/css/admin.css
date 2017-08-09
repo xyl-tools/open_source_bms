@@ -21,9 +21,20 @@
 .layui-btn-normal {background: #4caf50;}
 .layui-btn-danger {background: #e90d24;}
 .layui-nav-tree .layui-nav-child dd a {text-indent: 16px;}
+.layui-form-label-min{
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    font-weight: 400;
+    text-align: right;
+    width: 140px
+}
 
+.layui-input-block-min{
+    margin-left: 170px;min-height: 36px; width:66%;}
 .form-container {max-width: 800px;}
 .form-container .edui-editor {margin-top: -7px;margin-bottom: -7px;margin-left: -11px;}
+
 
 /*分页*/
 .pagination {}
@@ -32,3 +43,5 @@
 .pagination li a {display: block;text-align: center;}
 
 .photo-list {margin: 5px 0;}
+
+.help-block {  display: block;  margin-top: 5px;  margin-bottom: 0;  color: #737373;font-size: 12px; }

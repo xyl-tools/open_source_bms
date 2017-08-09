@@ -236,3 +236,4 @@ function check_mobile_number($mobile)
 
     return preg_match($reg, $mobile) ? true : false;
 }
+
