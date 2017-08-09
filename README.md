@@ -14,6 +14,9 @@
 
 ## 2017.8.9合并更新
 
+* 感谢 [wuangjs](https://github.com/wuangjs) 的支持
+* 合并详情 [查看](https://github.com/xiayulei/open_source_bms/pull/25)
+
 ## 2017.4.19更新（v1.1.1)：
 
 * 核心框架同步更新为官方5.0.10
