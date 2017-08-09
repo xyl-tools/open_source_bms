@@ -1,5 +1,3 @@
-### 与原来项目不一样了（think模型的使用）
-未来可能会加上[Think.Admin](https://github.com/zoujingli/Think.Admin)微信管理功能
 ## Open Source BMS（原Think Admin）是什么?
 全称Open Source Background Manager System，开源后台管理系统
 一个节省开发时间的后台管理系统，程序基于ThinkPHP 5开发，后台UI使用LayUI搭建
@@ -13,6 +11,8 @@
 * 下载程序至本地，请搭建虚拟域名，并开启URL重写（必须）
 * 站点开发前，建议修改`application`目录下的`config`配置文件，找到`salt`项，此项为全站加密公用盐值，请先修改，然后使用`md5('新密码' . config('salt'))`生成新密码，替换`admin_user`表中的默认管理员密码
 * 默认后台账号 `admin`，密码`admin`
+
+## 2017.8.9合并更新
 
 ## 2017.4.19更新（v1.1.1)：
 
