@@ -24,7 +24,7 @@ class Ueditor extends Controller
                 'state' => 'ERROR'
             ];
 
-            return json($result);
+            return abort(json($result));
         }
 
         $this->config = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents(ROOT_PATH . 'public/static/js/ueditor/config.json')), true);
