@@ -20,7 +20,7 @@ class Upload extends Controller
                 'message' => '未登录'
             ];
 
-            return json($result);
+            return abort(json($result));
         }
     }
 
