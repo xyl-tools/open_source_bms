@@ -9,19 +9,17 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-
-
 return [
     // 数据库类型
-    'type'            => \think\Env::get('database.type','mysql'),
+    'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => \think\Env::get('database.host','127.0.0.1'),
+    'hostname'        => '127.0.0.1',
     // 数据库名
     'database'        => 'open_source_bms',
     // 用户名
-    'username'        => \think\Env::get('database.username','root'),
+    'username'        => 'root',
     // 密码
-    'password'        => \think\Env::get('database.password','root'),
+    'password'        => 'root',
     // 端口
     'hostport'        => '',
     // 连接dsn
@@ -29,9 +27,9 @@ return [
     // 数据库连接参数
     'params'          => [],
     // 数据库编码默认采用utf8
-    'charset'         => 'utf8mb4',
+    'charset'         => 'utf8',
     // 数据库表前缀
-    'prefix'          => '',
+    'prefix'          => 'os_',
     // 数据库调试模式
     'debug'           => true,
     // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
