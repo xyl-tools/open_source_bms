@@ -13,7 +13,7 @@ class Login extends Validate
     protected $rule = [
         'username' => 'require',
         'password' => 'require',
-        //'verify'   => 'require|captcha'
+        'verify'   => 'require|captcha'
     ];
 
     protected $message = [

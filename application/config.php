@@ -49,7 +49,7 @@ return [
     // 应用类库后缀
     'class_suffix'           => false,
     // 控制器类后缀
-    'controller_suffix'      => true,
+    'controller_suffix'      => false,
 
     // auth配置
     'auth'                   => [
@@ -68,7 +68,7 @@ return [
     ],
 
     // 全站加密密钥（开发新站点前请修改此项）
-    'salt'                   => 'fwefadfsdsafds',
+    'salt'                   => '1dFlxLhiuLqnUZe9kA',
 
     // 验证码配置
     'captcha'                => [
@@ -169,8 +169,6 @@ return [
         'taglib_begin' => '{',
         // 标签库标签结束标记
         'taglib_end'   => '}',
-
-        'tpl_deny_php' => false,
     ],
 
     // 手机模板开启
@@ -178,11 +176,11 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'      => [
-        '__UPLOAD__' => '/uploads',
-        '__STATIC__' => '/static',
-        '__IMAGES__' => '/static/images',
-        '__JS__'     => '/static/js',
-        '__CSS__'    => '/static/css',
+        '__UPLOAD__' => '/public/uploads',
+        '__STATIC__' => '/public/static',
+        '__IMAGES__' => '/public/static/images',
+        '__JS__'     => '/public/static/js',
+        '__CSS__'    => '/public/static/css',
     ],
 
     // 默认跳转页面对应的模板文件

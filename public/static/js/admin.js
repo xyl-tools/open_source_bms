@@ -12,10 +12,7 @@ var layer = layui.layer,
  */
 $.ajaxSetup({
     type: "post",
-    dataType: "json",
-    error: function(xhr,textStatus,errorMsg){
-        alert('系统错误'+this.url+"["+xhr.status+"]:"+errorMsg);
-    }
+    dataType: "json"
 });
 
 /**
